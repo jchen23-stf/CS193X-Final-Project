@@ -7,6 +7,8 @@
     <!-- These two lines provide automatic page and style reloading when files change -->
     <script src="/socket.io/socket.io.js"></script>
     <script src="/lib/client/updater.js" defer></script>
+    <link rel="stylesheet" href="app.css">
+    <script type="module" src="app.js"></script>
   </head>
   <body>
     <header id="header">
@@ -14,5 +16,16 @@
         <h1 class="brand">Stanford Hacker News</h1>
       </div>
     </header>
+    <main id="main">
+      <div id="templatePost" class="post">
+        <div class="postHeader">
+          <span class="title"></span>
+          <span class="name"></span>
+          <span class="time"></span>
+          <a href="www.google.com">Comments</a>
+        </div>
+      </div>
+      <div id="feed"></div>
+    </main>
   </body>
 </html>
