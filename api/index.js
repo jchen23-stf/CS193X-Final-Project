@@ -68,7 +68,6 @@ api.get("/feed", async(req, res) => {
   res.json({ posts });
 }); 
 
-
 api.post("/users/:id/posts", async(req, res) => {
   let user = res.locals.user;
   let id = user.id;
@@ -81,7 +80,7 @@ api.post("/users/:id/posts", async(req, res) => {
     return;
   }
 
-  await Posts.insertOne({userId: id, time: time, text: text, url: url});
+  await Posts.insertOne({id: id, time: time, text: text, url: url});
   res.json({ success: true }) ;
 });
 
