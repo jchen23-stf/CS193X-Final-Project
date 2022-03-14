@@ -51,4 +51,38 @@ api.get("/users/:id", (req, res) => {
   res.json({ user });
 });
 
+api.post("/users", async (req, res) => {
+  let { id } = req.body;
+
+  await Users.insertOne({
+    "id": id,
+  });
+
+  let user = await Users.findOne({ id });
+  delete user._id;
+  res.json({ user });
+});
+
+api.get("/feed", async(req, res) => {
+  let posts = await Posts.find().toArray();
+  res.json({ posts });
+}); 
+
+
+api.post("/users/:id/posts", async(req, res) => {
+  let user = res.locals.user;
+  let id = user.id;
+  let time = new Date();
+  let text = req.body.text;
+  let url = req.body.url;
+
+  if (!text) {
+    res.status(400).json({error:"The request body must contain a non-empty text"});
+    return;
+  }
+
+  await Posts.insertOne({userId: id, time: time, text: text, url: url});
+  res.json({ success: true }) ;
+});
+
 export default initApi;
