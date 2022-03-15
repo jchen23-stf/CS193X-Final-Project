@@ -15,6 +15,7 @@
       <div class="widthContainer">
         <img class="cover" src="images/stanford.png" alt="story cover">
         <h1 class="brand">Stanford Hacker News</h1>
+        <button >
       </div>
     </header>
     <main id="main">
@@ -28,6 +29,23 @@
             <a href="www.google.com">Comments</a>
           </div>
         </div>
+      </div>
+      <div class="form-popup" id="myForm">
+        <form action="/action_page.php" class="form-container">
+          <h1>New Post</h1>
+      
+          <label for="id"><b>ID</b></label>
+          <input type="text" placeholder="Enter id" name="id" required>
+      
+          <label for="headline"><b>Headline</b></label>
+          <input type="text" placeholder="Enter something for the readers" name="headline" required>
+
+          <label for="article_url"><b>Article URL</b></label>
+          <input type="text" placeholder="Enter the article's url" name="article_url" required>
+      
+          <button type="submit" class="btn">Post</button>
+          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
       </div>
       <div id="feed"></div>
     </main>
