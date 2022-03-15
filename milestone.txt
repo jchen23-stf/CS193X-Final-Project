@@ -1,0 +1,41 @@
+CS193X Final Project Milestone
+=============================
+
+Project Name: Stanford Hacker News
+Your Name: Jiahui Chen 
+Your SUNetID: jchen23
+
+Overview
+--------
+I have built the first prototype of the landing page. That includes a header and a template post that I can use later. 
+Here are my next steps:
+[ ] Build a comment page where users can see comments in threads for each post 
+[ ] Build the APIs for posting a new post, and getting feed
+[ ] Build the User class and login system  
+
+Project Changes
+---------------
+There has been no changes so far. 
+
+Follow-up
+---------
+N/A 
+
+API
+---
+POST /users/:id/posts - creates a new post by the given user 
+DELETE /users/:id/posts - deletes a given post posted by the user 
+POST /users/:id/posts/comments - posts a comment under a give story 
+GET / - gets the current feed; it will be the same for every user since it is a public forum 
+
+External libraries and code
+---------------------------
+N/A 
+
+Collaboration and resources
+---------------------------
+N/A 
+
+Anything else?
+-------------
+N/A
