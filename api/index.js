@@ -65,8 +65,17 @@ api.post("/users", async (req, res) => {
 
 api.get("/feed", async(req, res) => {
   let posts = await Posts.find().toArray();
+  posts = posts.sort(compareFn);
   res.json({ posts });
 }); 
+
+function compareFn (a,b) {
+  if (a.time.getTime() > b.time.getTime()) {
+    return -1;
+  } else {
+    return 1;
+  }
+};
 
 api.post("/users/:id/posts", async(req, res) => {
   let user = res.locals.user;

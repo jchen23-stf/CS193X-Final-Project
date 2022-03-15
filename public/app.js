@@ -45,7 +45,7 @@ class App {
         let elem = document.querySelector(".templatePost").cloneNode(true);
         elem.querySelector(".title").textContent = post.text
         elem.querySelector(".name").textContent = post.id;
-        elem.querySelector(".time").textContent = post.time;
+        elem.querySelector(".time").textContent = post.time.toLocaleString();
         elem.classList.add("post")
         elem.classList.remove("templatePost")
         document.querySelector("#feed").append(elem);
