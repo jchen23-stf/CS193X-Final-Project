@@ -37,23 +37,8 @@ export default class User {
     Object.assign(this, data);
   }
 
-  /* Returns an Object containing only the public instances variables (i.e. the ones sent to the API). */
-  toJSON() {
-    return {
-      'id': this.id,
-      'name': this.name,
-      'avatarURL': this.avatarURL
-    };
-  }
-
-  /* Save the current state (name and avatar URL) of the user to the server. */
-  async save() {
-    let payload = this.toJSON();
-    let result = await apiRequest("PATCH", `/users/${this.id}`, payload);
-  }
-
   /* Returns an Array of Post objects. Includes the user's own posts as well as those of users they are following. */
-  async getFeed() {
+  static async getFeed() {
     let result = await apiRequest("GET", `/feed`);
     let posts = result.posts;
     let ret = [];
@@ -64,23 +49,12 @@ export default class User {
   }
 
   /* Create a new post with the given text. */
-  async makePost(id, text, url) {
+  static async makePost(id, text, url) {
     let body = {
       "id" : id,
       "text": text,
       "url": url
     };
     let result = await apiRequest("POST", `/users/${id}/posts`, body);
-    console.log(result)
-  }
-
-  /* Start following the specified user id. Throws an HTTPError if the specified user ID does not exist. */
-  async addFollow(id) {
-    let result = await apiRequest("POST", `/users/${this.id}/follow?target=${id}`);
-  }
-
-  /* Stop following the specified user id. Throws an HTTPError if the user isn't following them. */
-  async deleteFollow(id) {
-    let result = await apiRequest("DELETE", `/users/${this.id}/follow?target=${id}`);
   }
 }

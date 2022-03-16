@@ -1,68 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title></title>
 
-    <!-- These two lines provide automatic page and style reloading when files change -->
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/lib/client/updater.js" defer></script>
-    <link rel="stylesheet" href="app.css">
-    <script type="module" src="app.js"></script>
-  </head>
-  <body>
-    <header id="header">
-      <div class="widthContainer">
-        <img class="cover" src="images/stanford.png" alt="story cover">
-        <h1 class="brand">Stanford Hacker News</h1>
-        <button class="signup_btn">Sign Up </button>
-        <button class="post_btn">Post </button>
-      </div>
-    </header>
-    <main id="main">
-      <div class="templatePost">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+
+  <!-- These two lines provide automatic page and style reloading when files change -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/lib/client/updater.js" defer></script>
+  <link rel="stylesheet" href="app.css">
+  <script type="module" src="app.js"></script>
+</head>
+
+<body>
+  <header id="header">
+    <div class="widthContainer">
+      <img class="cover" src="images/stanford.png" alt="story cover">
+      <h1 class="brand">Stanford Hacker News</h1>
+      <button class="signup_btn">Sign Up </button>
+      <button class="post_btn">Post </button>
+    </div>
+  </header>
+  <main id="main">
+    <div class="templatePost">
+      <div class="postContent">
         <img class="cover" src="images/cover.jpeg" alt="story cover">
         <div class="content">
-          <span class="title"></span>
+          <a class=title href="https://www.w3schools.com/"></a>
           <span class="name"></span>
           <div class="time_comments">
             <span class="time"></span>
-            <a href="www.google.com">Comments</a>
+            <span class="comments">Comments</span>
           </div>
         </div>
       </div>
-      <div class="form-popup" id="post_form">
-        <form class="form-container">
-          <h1>New Post</h1>
-      
-          <label for="id"><b>ID</b></label>
-          <input id = "input_id" type="text" placeholder="Enter id" name="id" required>
-      
-          <label for="headline"><b>Headline</b></label>
-          <input id = "input_headline" type="text" placeholder="Enter something for the readers" name="headline" required>
+      <hr class="solid">
+    </div>
+    <div class="form-popup" id="post_form">
+      <form class="form-container">
+        <h1>New Post</h1>
 
-          <label for="article_url"><b>Article URL</b></label>
-          <input id = "input_url" type="text" placeholder="Enter the article's url" name="article_url" required>
-      
-          <button type="submit" class="post_submit_btn">Post</button>
-          <button type="button" class="post_close_btn">Close</button>
-        </form>
-      </div>
-      <div class="form-popup" id="signup_form">
-        <form class="form-container">
-          <h1>Sign Up</h1>
-      
-          <label for="id"><b>ID</b></label>
-          <input id = "input_id" type="text" placeholder="Enter id" name="id" required>
-      
-          <label for="email"><b>Stanford Email</b></label>
-          <input id = "input_email" type="text" placeholder="Enter your Stanford email" name="headline" required>
-      
-          <button type="submit" class="signup_submit_btn">Create</button>
-          <button type="button" class="signup_close_btn">Close</button>
-        </form>
-      </div>
-      <div id="feed"></div>
-    </main>
-  </body>
+        <label for="id"><b>ID</b></label>
+        <input id="input_id" type="text" placeholder="Enter id" name="id" required>
+
+        <label for="headline"><b>Headline</b></label>
+        <input id="input_headline" type="text" placeholder="Enter something for the readers" name="headline" required>
+
+        <label for="article_url"><b>Article URL</b></label>
+        <input id="input_url" type="text" placeholder="Enter the article's url" name="article_url" required>
+
+        <button type="submit" class="post_submit_btn">Post</button>
+        <button type="button" class="post_close_btn">Close</button>
+      </form>
+    </div>
+    <div class="form-popup" id="signup_form">
+      <form class="form-container">
+        <h1>Sign Up</h1>
+
+        <label for="id"><b>ID</b></label>
+        <input id="input_id" type="text" placeholder="Enter id" name="id" required>
+
+        <label for="email"><b>Stanford Email</b></label>
+        <input id="input_email" type="text" placeholder="Enter your Stanford email" name="headline" required>
+
+        <button type="submit" class="signup_submit_btn">Create</button>
+        <button type="button" class="signup_close_btn">Close</button>
+      </form>
+    </div>
+    <div id="feed"></div>
+  </main>
+</body>
+
 </html>

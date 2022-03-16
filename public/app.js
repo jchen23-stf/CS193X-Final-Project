@@ -14,7 +14,6 @@ class App {
         this._onSubmitSignup = this._onSubmitSignup.bind(this);
     }
     async setup() {
-        this._user = new User("emma");
         // add listeners to the buttons 
         let post_button = document.querySelector(".post_btn");
         post_button.addEventListener("click", this._onPost);
@@ -33,7 +32,7 @@ class App {
 
     async load() {
         document.querySelector("#feed").textContent = "";
-        this._posts = await this._user.getFeed();
+        this._posts = await User.getFeed();
         console.log(this._posts)
         for (let post of this._posts) {
             this._displayPost(post);
@@ -43,11 +42,12 @@ class App {
 
     _displayPost(post) {
         let elem = document.querySelector(".templatePost").cloneNode(true);
-        elem.querySelector(".title").textContent = post.text
+        elem.querySelector(".title").textContent = post.text;
+        elem.querySelector(".title").setAttribute('href', post.url);
         elem.querySelector(".name").textContent = post.id;
         elem.querySelector(".time").textContent = post.time.toLocaleString();
-        elem.classList.add("post")
-        elem.classList.remove("templatePost")
+        elem.classList.add("post");
+        elem.classList.remove("templatePost");
         document.querySelector("#feed").append(elem);
     }
 
@@ -61,13 +61,14 @@ class App {
         document.querySelector("#signup_form").style.display = "flex";
     }
 
-    _onSubmitPost(event) {
+    async _onSubmitPost(event) {
         event.preventDefault();
         let form = document.querySelector("#post_form");
         let id = form.querySelector("#input_id").value;
         let headline = form.querySelector("#input_headline").value;
         let article_url = form.querySelector("#input_url").value;
-        this._user.makePost(id, headline, article_url);
+        let result = await User.makePost(id, headline, article_url);
+        console.log(result)
         this.load()
     }
 
